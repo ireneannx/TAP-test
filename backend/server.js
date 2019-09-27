@@ -17,9 +17,9 @@ var authRouter = require('./routes/auth');
 var app = express();
 
 //frontend build folder
-const root = require('path').join(__dirname, 'build');
+//const root = require('path').join(__dirname, 'build');
 
-app.use(express.static(root))
+//app.use(express.static(root))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,17 +34,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/user', usersRouter);
-app.use('/jobs', jobsRouter)
-app.use('/posts', postsRouter);
-app.use('/auth', authRouter);
-app.use('/users', userProfileRouter);
+app.use('/api', indexRouter);
+app.use('/api/user', usersRouter);
+app.use('/api/jobs', jobsRouter)
+app.use('/api/posts', postsRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/users', userProfileRouter);
 
 //catch all other routes
-app.get("/*", (req, res) => {
-  res.sendFile("index.html", { root });
-})
+// app.get("/*", (req, res) => {
+//   res.sendFile("index.html", { root });
+// })
 
 
 // catch 404 and forward to error handler
